@@ -1,0 +1,9 @@
+---
+
+- name: restart newrelic infra
+  become: yes
+  service:
+    name: newrelic-infra
+    state: restarted
+  when:
+    - sansible_newrelic_integration_infra_start_on_boot

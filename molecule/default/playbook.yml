@@ -1,0 +1,24 @@
+---
+
+- name: Converge
+  hosts: all
+
+  pre_tasks:
+    - name: Install net-tools
+      become: yes
+      apt:
+        name: net-tools
+        update_cache: yes
+        cache_valid_time: 3600
+      retries: 2
+      register: apt_result
+      until: apt_result is succeeded
+
+  roles:
+    - role: newrelic_integration_infra
+      sansible_newrelic_integration_infra_enabled: yes
+      sansible_newrelic_integration_infra_settings:
+        license_key: 123456789123456789123456789123456789
+        custom_attributes:
+          org: sansible
+          role: newrelic

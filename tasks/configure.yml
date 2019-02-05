@@ -1,0 +1,22 @@
+---
+
+- name: Configure New Relic infra
+  become: yes
+  template:
+    dest: /etc/newrelic-infra.yml
+    group: "{{ sansible_newrelic_integration_infra_group }}"
+    mode: 0640
+    owner: "{{ sansible_newrelic_integration_infra_user }}"
+    src: newrelic-infra.yml.j2
+  vars:
+    settings: "{{ sansible_newrelic_integration_infra_default_settings
+      | combine(sansible_newrelic_integration_infra_settings) }}"
+  notify:
+    - restart newrelic infra
+
+- name: Start New Relic Infra if start on boot enabled
+  become: yes
+  service:
+    name: newrelic-infra
+    state: started
+  when: sansible_newrelic_integration_infra_start_on_boot
