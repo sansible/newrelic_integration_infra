@@ -12,15 +12,22 @@
     - apt-transport-https
     - apt-utils
 
-- name: Ensure New Relic PGP key is known to the server
+- name: Download New Relic Infra PGP key (works with Bionic behind a proxy)
   become: yes
-  apt_key:
-    id: "{{ sansible_newrelic_integration_infra_apt_key }}"
-    keyserver: hkp://keyserver.ubuntu.com:80
-    state: present
+  get_url:
+    dest: /usr/local/src/newrelic_infra.asc
+    mode: 0644
+    url: "https://{{ sansible_newrelic_integration_infra_apt_repo_keyserver }}/pks/lookup?op=get&search=0x{{ sansible_newrelic_integration_infra_apt_key }}"
   retries: 2
   register: apt_result
   until: apt_result is succeeded
+
+- name: Ensures New Relic Infra PGP key is known
+  become: yes
+  apt_key:
+    file: /usr/local/src/newrelic_infra.asc
+    id: "{{ sansible_newrelic_integration_infra_apt_key }}"
+    state: present
 
 - name: Add New Relic APT repository
   become: yes
