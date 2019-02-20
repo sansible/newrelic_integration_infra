@@ -6,6 +6,7 @@ sansible_newrelic_integration_infra_apt_key: 8ECCE87C
 sansible_newrelic_integration_infra_apt_repo: "deb [arch=amd64]
   https://download.newrelic.com/infrastructure_agent/linux/apt
   {{ ansible_distribution_release }}   main"
+sansible_newrelic_integration_infra_apt_repo_keyserver: keyserver.ubuntu.com
 sansible_newrelic_integration_infra_group: newrelic
 sansible_newrelic_integration_infra_settings: {}
 sansible_newrelic_integration_infra_start_on_boot: no
