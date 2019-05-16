@@ -17,8 +17,9 @@
   get_url:
     dest: /usr/local/src/newrelic_infra.asc
     mode: 0644
-    url: "https://{{ sansible_newrelic_integration_infra_apt_repo_keyserver }}/pks/lookup?op=get&search=0x{{ sansible_newrelic_integration_infra_apt_key }}"
+    url: "{{ sansible_newrelic_integration_infra_apt_repo_keyserver }}/pks/lookup?op=get&search=0x{{ sansible_newrelic_integration_infra_apt_key }}"
   retries: 2
+  delay: 10
   register: apt_result
   until: apt_result is succeeded
 
