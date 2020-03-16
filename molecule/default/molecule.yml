@@ -9,8 +9,6 @@ driver:
 # See https://molecule.readthedocs.io/en/latest/configuration.html#platforms for details.
 # NOTE: Different drivers (see above) may have different configuration options.
 platforms:
-  - name: newrelic_integration_infra-trusty
-    image: ubuntu:trusty
   - name: newrelic_integration_infra-xenial
     image: solita/ubuntu-systemd:xenial
     command: /sbin/init

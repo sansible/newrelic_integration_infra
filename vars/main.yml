@@ -1,5 +1,6 @@
 ---
-
+# For more options check:
+# https://docs.newrelic.com/docs/infrastructure/new-relic-infrastructure/configuration/infrastructure-config-file-template-newrelic-infrayml
 sansible_newrelic_integration_infra_default_settings:
   # Option : license_key
   # Value  : 40-character hexadecimal string provided by New Relic. This is
@@ -34,6 +35,13 @@ sansible_newrelic_integration_infra_default_settings:
   # Default: Typical default location for standard log files
   #
   log_file: /var/log/newrelic/newrelic-infra.log
+
+  # Option . : log_to_stdout
+  # Env var  : NRIA_LOG_TO_STDOUT
+  # Value    : Set to false to disable logs in the standard output. By default all
+  #            logs are displayed in both standard output and a log file.
+  # Default  : true
+  log_to_stdout: "false"
 
   # Option : Optional custom attributes
   # Use optional key-value pairs to build filter sets, group your results,

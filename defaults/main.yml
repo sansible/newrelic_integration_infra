@@ -11,4 +11,4 @@ sansible_newrelic_integration_infra_group: newrelic
 sansible_newrelic_integration_infra_settings: {}
 sansible_newrelic_integration_infra_start_on_boot: no
 sansible_newrelic_integration_infra_user: newrelic
-sansible_newrelic_integration_infra_version: "1.0.*"
+sansible_newrelic_integration_infra_version: "1.*"
